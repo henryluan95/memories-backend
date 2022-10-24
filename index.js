@@ -2,12 +2,16 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
+import postRoutes from "./routes/posts.js";
 
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+//Create posts routes
+app.use("/posts", postRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://memories:memories123@cluster0.uevplwh.mongodb.net/?retryWrites=true&w=majority";
